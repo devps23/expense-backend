@@ -1,21 +1,7 @@
 name: learn-github-actions
-on: [push]
+on: [workflow_call]
 jobs:
-  sample-job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: run before checkout
-        run: ls
-      - name: code checkout
-        uses: actions/checkout@v4
-      - name: run after checkout
-        run: ls -l
-      - name: code build
-        run: echo build
-      - name: code test
-        run: echo test
-      - name: code review
-        run: echo review
-      - name: release software
-        run: echo release software
+  call-workflow-passing-data:
+    uses: devps23/expense-backend/.github/workflows/reusable-workflow.yml@main
+
 
