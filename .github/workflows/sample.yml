@@ -1,1 +1,13 @@
-https://github.com/devps23/expense-frontend.git
+name: learn-github-actions
+on: [push]
+jobs:
+  sample-job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run before checkout
+        run: ls
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: run after checkout
+        run: ls -l
+
