@@ -10,4 +10,12 @@ jobs:
         uses: actions/checkout@v4
       - name: run after checkout
         run: ls -l
+      - name: code build
+        run: echo build
+      - name: code test
+        run: echo test
+      - name: code review
+        run: echo review
+      - name: release software
+        run: echo release software
 
