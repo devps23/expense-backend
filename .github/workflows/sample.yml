@@ -1,7 +1,0 @@
-name: learn-github-actions
-on: [workflow_call]
-jobs:
-  call-workflow-passing-data:
-    uses: devps23/expense-backend/.github/workflows/reusable-workflow.yml@main
-
-
