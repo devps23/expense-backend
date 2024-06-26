@@ -3,5 +3,5 @@ on: [push]
 jobs:
   ci-server:
     uses: devps23/reuse-github-actions/.github/workflows/ci.yml@main
-    with:
-      project-name: expense-backend
+#    with:
+#      project-name: expense-backend
