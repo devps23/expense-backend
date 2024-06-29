@@ -5,4 +5,4 @@ jobs:
     uses: devps23/reuse-github-actions/.github/workflows/ci.yml@main
     with:
       project-name: expense-backend
-#    secrets: inherit
+    secrets: inherit
