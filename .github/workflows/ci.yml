@@ -1,8 +1,7 @@
 name: learn-github-actions
-
 on: [push]
 jobs:
-  ci-server-1:
+  ci-server:
     uses: devps23/reuse-github-actions/.github/workflows/ci.yml@main
     with:
       project-name: expense-backend
