@@ -12,4 +12,8 @@ jobs:
         uses: jfrog/setup-jfrog-cli@v4
       - run: echo ${{secrets.JF_URL}}
         name: get secrets
+      - run: echo ${{secrets.JF_USER}}
+        name: get user name
+      - run: echo ${{secrets.JF_PASSWORD}}
+        name: get password
 
