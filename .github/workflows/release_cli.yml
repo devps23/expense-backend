@@ -5,6 +5,6 @@ jobs:
     uses: devps23/reuse-github-actions/.github/workflows/release_cli.yml@main
     with:
       project-name: expense-backend
-      release_archive_file: "*.js package.json schema VERSION"
+      release_archive_file: '*.js package.json schema VERSION'
     secrets: inherit
 
