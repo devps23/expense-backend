@@ -1,12 +1,13 @@
 name: release-github-actions
-on:
-  push:
-    tags:
-      - "*"
+on: [push]
 
 jobs:
   ci-server:
     uses: devps23/reuse-github-actions/.github/workflows/release_cli.yml@main
     with:
       project-name: expense-backend
-      secrets: inherit
+
+
+
+
+
