@@ -6,4 +6,3 @@ jobs:
     with:
       project-name: expense-backend
       secrets: inherit
-      environment: ${{vars.JF_USER}}
