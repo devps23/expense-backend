@@ -1,14 +1,14 @@
-name: learn-github-actions
-on:
-  push:
-    branches:
-      - main
-jobs:
-  ci-server:
-  runs-on: ubuntu-latest
-  steps:
-    uses: devps23/reuse-github-actions/.github/workflows/ci.yml@main
-
-    with:
-      project-name: expense-backend
-      secrets: inherit
+#name: learn-github-actions
+#on:
+#  push:
+#    branches:
+#      - main
+#jobs:
+#  ci-server:
+#  runs-on: ubuntu-latest
+#  steps:
+#    uses: devps23/reuse-github-actions/.github/workflows/ci.yml@main
+#
+#    with:
+#      project-name: expense-backend
+#      secrets: inherit
