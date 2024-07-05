@@ -6,6 +6,5 @@ jobs:
     with:
       project-name: expense-backend
       release_archive_file: "*.js package.json schema"
-
     secrets: inherit
 
