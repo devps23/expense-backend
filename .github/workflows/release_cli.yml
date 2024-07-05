@@ -1,9 +1,15 @@
 name: release-github-actions
 on: [push]
 jobs:
-  ci-server:
-    uses: devps23/reuse-github-actions/.github/workflows/release_cli.yml@main
-    with:
-      project-name: expense-backend
-      secrets: inherit
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - run: ls -lh
+        name: upload artifact file through jfrog cli
+      - name: jfrog through cli
+        uses: jfrog/setup-jfrog-cli@v4
+      - run: echo ${{secrets.JF_URL}}
+        name: get secrets
 
