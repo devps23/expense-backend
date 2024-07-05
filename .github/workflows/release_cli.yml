@@ -1,5 +1,5 @@
 name: release-github-actions
-on: workflow_call
+on: [push]
 jobs:
   ci-server:
     uses: devps23/reuse-github-actions/.github/workflows/release_cli.yml@main
