@@ -1,14 +1,9 @@
 name: release-github-actions
-on: [push]
-
+on: workflow_dispatch
 jobs:
   ci-server:
     uses: devps23/reuse-github-actions/.github/workflows/release_cli.yml@main
     with:
       project-name: expense-backend
-      environment: true
-
-
-
-
-
+      secrets: inherit
+      environment: ${{vars}}
