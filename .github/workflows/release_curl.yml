@@ -1,0 +1,10 @@
+name: release code through curl
+on: [push]
+jobs:
+  job_curl:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: get list of files
+        run: ls -l
