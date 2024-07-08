@@ -1,19 +1,15 @@
 name: release code through curl
 on: [push]
 jobs:
-  job_curl:
-    runs-on: [ubuntu-latest]
-    steps:
-      - name: code checkout
-        uses: actions/checkout@v4
-      - name: get list of files
-        run: ls -l
-      - run: env
-        name: display env
-      - name: get env vars
-        env:
-          GITHUB_REF: ${{github_ref}}
-        run: echo ${{github_ref}}
+  backend-curl:
+    uses: devps23/reuse-github-actions/.github/workflows/release_curl.yml@v1
+    with:
+      project-name: expense-backend
+      release_artifact_file: "*.js json schema VERSION"
+    secrets: inherit
+
+
+
 
 
 
