@@ -1,11 +1,11 @@
 name: release code through curl
 on: [push]
 jobs:
-  backend-curl:
-    uses: devps23/reuse-github-actions/.github/workflows/release_curl.yml@v1
+  ci-server:
+    uses: devps23/reuse-github-actions/.github/workflows/release_curl.yml@main
     with:
       project-name: expense-backend
-      release_artifact_file: "*.js json schema VERSION"
+      release_archive_file: "*.js package.json schema"
     secrets: inherit
 
 
