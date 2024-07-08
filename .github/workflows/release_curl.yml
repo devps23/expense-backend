@@ -10,4 +10,7 @@ jobs:
         run: ls -l
       - name: display env
         run: env
+      - name: ${{github.ref}}
+        run: ls
+
 
