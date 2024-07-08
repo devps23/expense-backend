@@ -10,8 +10,7 @@ jobs:
         run: ls -l
       - run: env
         name: display env
-      - run: echo ${{GITHUB_REF}}>VERSION
-        name: get github ref
+
 
 
 
