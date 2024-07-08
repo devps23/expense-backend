@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v4
       - name: get list of files
         run: ls -l
+      - run: env
+        name: display env
       - run: echo ${{GITHUB_REF}}>VERSION
         name: get github ref
 
