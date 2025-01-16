@@ -29,13 +29,7 @@ pipeline {
           }
         }
     }
-    stages {
-        stage('Print Specific Variables') {
-            steps {
-                echo "jenkins_url: ${jenkins_url}"
-              }
-            }
-        }
+
     stages {
         stage('Example') {
             steps {
