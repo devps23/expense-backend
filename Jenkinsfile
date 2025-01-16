@@ -24,17 +24,21 @@ pipeline {
                   string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
               }
           }
+
           steps {
               echo "Hello, ${PERSON}, nice to meet you."
           }
         }
-    }
-
-    stages {
+        stage('Print Specific Variables') {
+            steps {
+                echo "jenkins_url: ${jenkins_url}"
+            }
+        }
         stage('Example') {
             steps {
                 echo 'Hello World'
             }
-        }
-    }
+       }
+
+
 }
