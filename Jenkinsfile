@@ -15,28 +15,9 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
         }
     stages {
-        stage('Example1') {
-            input {
-              message "Should we continue?"
-              ok "Yes, we should."
-              submitter "alice,bob"
-              parameters {
-                  string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-              }
-          }
-
-          steps {
-              echo "Hello, ${PERSON}, nice to meet you."
-          }
-        }
-        stage('Print Specific Variables') {
-            steps {
-                echo "jenkins_url: ${jenkins_url}"
-            }
-        }
-        stage('Example') {
-            steps {
-                echo 'Hello World'
+       stage('Example') {
+           steps {
+               echo 'Hello World'
             }
        }
 
