@@ -33,7 +33,7 @@ pipeline {
                echo 'Hello World'
            }
        }
-       stage('Example') {
+       stage('input') {
         input {
             message "Should we continue?"
             ok "Yes, we should."
