@@ -19,7 +19,8 @@ pipeline {
                }
          }
          stage('Run Integration tests') {
-
+            when { allOf { not { buildingTag() }
+                                 branch 'main' } }
             steps{
                 echo 'Run Integration Tests'
             }
