@@ -1,4 +1,4 @@
-pipleline{
+pipeline{
     agent { node { label 'node1' } }
     stages{
          stage('Lint Code'){
