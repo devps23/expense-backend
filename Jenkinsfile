@@ -4,7 +4,7 @@ pipeline {
          stage('Lint code') {
             when { allOf { buildingTag()
                 branch 'main'
-            }
+            }}
            steps {
               sh 'env'
               echo 'LintCode'
@@ -13,7 +13,7 @@ pipeline {
          stage('Run unit tests') {
               when { allof { buildingTag()
                 branch 'main'
-                     }
+                     }}
             steps {
                echo 'Run unit tests'
                }
@@ -21,7 +21,7 @@ pipeline {
          stage('Run Integration tests') {
             when { allof { buildingTag()
                 branch 'main'
-                     }
+                     }}
             steps{
                 echo 'Run Integration Tests'
             }
@@ -29,7 +29,8 @@ pipeline {
          stage('Sonar Scan Code Review'){
             when { allof { buildingTag()
                 branch 'main'
-                     }
+                     }}
+
             steps{
                 echo 'Sonar Scan Code Review'
             }
