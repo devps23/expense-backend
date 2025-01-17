@@ -2,26 +2,34 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
-            when { buildingTag() }
+            when { allOf { buildingTag()
+                branch 'main'
+            }
            steps {
               sh 'env'
               echo 'LintCode'
               }
          }
          stage('Run unit tests') {
-
+              when { allof { buildingTag()
+                branch 'main'
+                     }
             steps {
                echo 'Run unit tests'
                }
          }
          stage('Run Integration tests') {
-
+            when { allof { buildingTag()
+                branch 'main'
+                     }
             steps{
                 echo 'Run Integration Tests'
             }
          }
          stage('Sonar Scan Code Review'){
-
+            when { allof { buildingTag()
+                branch 'main'
+                     }
             steps{
                 echo 'Sonar Scan Code Review'
             }
