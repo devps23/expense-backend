@@ -2,10 +2,9 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
-            when { not { buildingTag() }
+            when { not { buildingTag() } }
 
-
-           steps {
+            steps {
               sh 'env'
               echo 'LintCode'
               }
