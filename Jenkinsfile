@@ -40,7 +40,7 @@ pipeline {
             }
          }
          stage('npm install'){
-             when { {buildingTag() }}
+             when { buildingTag() }
             steps{
                 echo 'npm install'
             }
