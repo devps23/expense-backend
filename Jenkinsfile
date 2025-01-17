@@ -2,7 +2,7 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
-            when { allof { not{}
+            when { allof { not{
             buildingTag() }}
             branch 'main'
             }
