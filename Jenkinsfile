@@ -25,7 +25,7 @@ pipeline {
             }
          }
          stage('Sonar Scan Code Review'){
-
+            when { not { buildingTag() } }
             steps{
                 echo 'Sonar Scan Code Review'
             }
