@@ -2,11 +2,13 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
+
            steps {
               echo 'LintCode'
               }
          }
          stage('Run unit tests') {
+            when { branch 'main' }
             steps {
                echo 'Run unit tests'
                }
@@ -17,6 +19,7 @@ pipeline {
             }
          }
          stage('Sonar Scan Code Review'){
+            when { branch 'main' }
             steps{
                 echo 'Sonar Scan Code Review'
             }
