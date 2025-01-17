@@ -2,7 +2,7 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
-            when { not { branch 'main' } }
+
            steps {
               sh 'env'
               echo 'LintCode'
@@ -15,7 +15,7 @@ pipeline {
                }
          }
          stage('Run Integration tests') {
-            when { not { branch 'main' } }
+
             steps{
                 echo 'Run Integration Tests'
             }
@@ -27,13 +27,13 @@ pipeline {
             }
          }
          stage('Build Code'){
-            when { not { branch 'main' } }
+
             steps{
                 echo 'Build Code'
             }
          }
          stage('Release Software'){
-            when { not { branch 'main' } }
+
             steps{
                 echo 'Release Software'
             }
