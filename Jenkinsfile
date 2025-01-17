@@ -1,26 +1,37 @@
 pipleline{
-    agent
-    { node { label 'node1' } }
-   stages{
-    stage('Lint Code'){
-    sh env
-        echo "Lint code"
-    }
-    stage('Run Unit Tests'){
-        echo "Run unit tests"
-    }
-    stage('Run Integration Tests'){
-        echo "Run Integration Tests"
-    }
-    stage('Sonar Scan Code Review'){
-        echo "Sonar Scan Code Review"
-    }
-    stage('Build Code'){
-        echo "Build Code"
-    }
-    stage('Release Software'){
-        echo "Release Software"
-    }
+    agent { node { label 'node1' } }
+    stages{
+         stage('Lint Code'){
+            steps{
+                sh env
+                echo "Lint code"
+            }
+        }
+        stage('Run Unit Tests'){
+            steps{
+                 echo "Run unit tests"
+            }
+        }
+        stage('Run Integration Tests'){
+            steps{
+                echo "Run Integration Tests"
+            }
+        }
+        stage('Sonar Scan Code Review'){
+            steps{
+                echo "Sonar Scan Code Review"
+            }
+        }
+        stage('Build Code'){
+            steps{
+                 echo "Build Code"
+            }
+        }
+        stage('Release Software'){
+            steps{
+                echo "Release Software"
+            }
+        }
    }
 }
 
