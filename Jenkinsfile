@@ -1,10 +1,11 @@
 pipeline {
     agent { node { label 'node1' } }
     stages {
-         stage('Examplep') {
+         stage('Lint code') {
                steps {
-                  echo 'Hello World'
+                  echo 'LintCode'
                   }
          }
+
     }
 }
