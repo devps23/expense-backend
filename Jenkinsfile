@@ -2,9 +2,8 @@ pipeline {
     agent { node { label 'node1' } }
     stages {
          stage('Lint code') {
-            when { allOf { not { buildingTag() }
-                          branch 'main'
-                        } }
+            when { not { buildingTag() }
+
 
            steps {
               sh 'env'
