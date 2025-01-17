@@ -12,7 +12,8 @@ pipeline {
               }
          }
          stage('Run unit tests') {
-
+            when { allOf { not { buildingTag() }
+                           branch 'main' } }
             steps {
                echo 'Run unit tests'
                }
