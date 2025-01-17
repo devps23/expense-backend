@@ -3,7 +3,7 @@ pipeline {
     stages {
          stage('Lint code') {
            steps {
-              sh env
+              sh 'env'
               echo 'LintCode'
               }
          }
