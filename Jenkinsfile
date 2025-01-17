@@ -4,7 +4,7 @@ pipeline {
          stage('Lint code') {
             when {
                allof {
-                 not{ buildingTag() }
+                 not { buildingTag() }
                  branch 'main'
                }
            }
