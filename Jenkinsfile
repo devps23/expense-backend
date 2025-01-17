@@ -1,8 +1,6 @@
 pipleline{
     agent
-    {
-    node 'node1'
-    }
+    { node { label 'node1' } }
    stages{
     stage('Lint Code'){
     sh env
