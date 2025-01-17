@@ -1,50 +1,31 @@
-pipeline {
-    agent { node { label 'node1' } }
-    environment {
-            jenkins_url = 'http://jenkins-internal.pdevops72.online:8200'
-        }
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-        }
-    stages {
-        stage('Examplep') {
-            steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-            }
-        }
-       stage('Example') {
-           steps {
-               echo 'Hello World'
-           }
-       }
-       stage('Example') {
-            input {
-              message "Should we continue?"
-              ok "Yes, we should."
-              submitter "alice,bob"
-              parameters {
-                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-              }
-            }
-            steps {
-              echo 'Hello World'
-            }
-          }
+pipleline{
+    agent
+    {
+    node 'node1'
     }
+   stages{
+    stage('Lint Code'){
+    sh env
+        echo "Lint code"
+    }
+    stage('Run Unit Tests'){
+        echo "Run unit tests"
+    }
+    stage('Run Integration Tests'){
+        echo "Run Integration Tests"
+    }
+    stage('Sonar Scan Code Review'){
+        echo "Sonar Scan Code Review"
+    }
+    stage('Build Code'){
+        echo "Build Code"
+    }
+    stage('Release Software'){
+        echo "Release Software"
+    }
+   }
 }
+
+// 1. if it is a master: lint and codereview
+//    2. if it is a developer: lint,unit tests,inte tests,Code Review
+//    3. if it is a tag : npm install and Release.
