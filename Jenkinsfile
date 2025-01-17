@@ -1,48 +1,24 @@
-pipeline {
-    agent { node { label 'node1' } }
-    stages {
-         stage('Lint code') {
-            when { not { buildingTag() } }
-
-            steps {
-              sh 'env'
-              echo 'LintCode'
-              }
-         }
-         stage('Run unit tests') {
-            when { allOf { not { buildingTag() }
-                           branch 'main' } }
-            steps {
-               echo 'Run unit tests'
-               }
-         }
-         stage('Run Integration tests') {
-            when { allOf { not { buildingTag() }
-                                 branch 'main' } }
-            steps{
-                echo 'Run Integration Tests'
-            }
-         }
-         stage('Sonar Scan Code Review'){
-            when { not { buildingTag() } }
-            steps{
-                echo 'Sonar Scan Code Review'
-            }
-         }
-         stage('npm install'){
-             when { buildingTag() }
-            steps{
-                echo 'npm install'
-            }
-         }
-         stage('Release Software'){
-            when { buildingTag() }
-            steps{
-                echo 'Release Software'
-            }
-         }
-
-    }
+node('node1'){
+if (env.TAG_NAME ==~ '.*') {
+stage('Build Code'){
+print 'OK'
 }
-
-
+stage('Release Software'){
+print 'OK'
+}
+}
+else{
+stage('Lint code'){
+print 'OK'
+}
+stage('Run unit tests'){
+print 'OK'
+}
+stage('Run integration tests'){
+print 'OK'
+}
+stage('Sonar Scan Code Review'){
+print 'OK'
+}
+}
+}
