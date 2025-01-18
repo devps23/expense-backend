@@ -13,7 +13,7 @@ else{
 stage('Lint code'){
 print 'OK'
 }
-if(env.BRANCH_NAME!=main){
+if(env.BRANCH_NAME != main){
 stage('Run unit tests'){
 print 'OK'
 }
