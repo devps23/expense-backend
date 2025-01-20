@@ -8,7 +8,7 @@ env.branch_name = "refs/tags/${env.TAG_NAME}"
 else{
 env.branch_name = "${env.BRANCH_NAME}"
 }
-checkout ScmGit(
+checkout([$class: 'GitSCM',
 branches: [[name: "${branch_name}"]],
 userRemoteConfigs: [[url: "https://github.com/devps23/expense-backend"]]
 )}
