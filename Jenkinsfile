@@ -9,7 +9,7 @@ env.branch_name = "${env.BRANCH_NAME}"
 }
 checkout ScmGit(
 branches: [[name: "${branch_name}"]],
-userRemoteConfigs: [[url: "https://github.com/devps23/expense-${component}"]]
+userRemoteConfigs: [[url: "https://github.com/devps23/expense-backend"]]
 )}
 }
 if (env.TAG_NAME ==~ '.*') {
