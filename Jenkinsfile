@@ -11,6 +11,7 @@ else{
 stage('Lint code'){
 print 'OK'
 }
+}
 if(env.BRANCH_NAME != 'main' ){
 stage('Run unit tests'){
 print 'OK'
@@ -22,7 +23,6 @@ print 'OK'
 else{
 stage('Sonar Scan Code Review'){
 print 'OK'
-}
 }
 }
 }
