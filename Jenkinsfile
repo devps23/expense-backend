@@ -1,3 +1,3 @@
 @Library('expense')
-env.component='backend'
+env.component = "backend"
 mainCI()
