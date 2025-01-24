@@ -1,3 +1,3 @@
-source /data/secrets
-cat /data/secrets
+source /data/secrets.txt
+cat /data/secrets.txt
 echo "Hello world"
