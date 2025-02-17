@@ -1,8 +1,6 @@
 source /data/secrets.txt
 cat /data/secrets.txt
-# it indicates to run a Node.js backend in a Docker container
-# starts your application, sets up server configurations, connects to databases, defines routes, and handles incoming requests.
-# (or sometimes app.js or server.js)
+
 if [ -z "$DB_HOST" ]; then
   echo "DB_HOST not exists"
   exit 1
@@ -25,3 +23,6 @@ if [ -z "$project_name" ]; then
 fi
 
 node  /app/index.js
+# it indicates to run a Node.js backend in a Docker container
+# starts your application, sets up server configurations, connects to databases, defines routes, and handles incoming requests.
+# (or sometimes app.js or server.js)
