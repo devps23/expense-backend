@@ -29,6 +29,7 @@ pipeline {
     stages {
         stage('Example1') {
             steps {
+            sh 'env'
                 echo "Example1"
             }
         }
