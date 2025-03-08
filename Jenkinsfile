@@ -1,34 +1,9 @@
-pipeline {
-    agent any;
-    stages {
-        stage('Example1') {
-            steps {
-                sh 'env'
-                echo "Example1"
-            }
-        }
-        stage('Example2') {
-            steps {
-                echo "Example2"
-            }
-        }
-        stage('Example3') {
-            steps {
-                echo "Example3"
-            }
-        }
-    }
-}
-
 // pipeline {
-//     agent {
-//       node {
-//         label 'ci-server'
-//       }
-//     }
+//     agent any;
 //     stages {
 //         stage('Example1') {
 //             steps {
+//                 sh 'env'
 //                 echo "Example1"
 //             }
 //         }
@@ -42,10 +17,35 @@ pipeline {
 //                 echo "Example3"
 //             }
 //         }
-//
 //     }
 // }
-//
+
+pipeline {
+    agent {
+      node {
+        label 'ci-server'
+      }
+    }
+    stages {
+        stage('Example1') {
+            steps {
+                echo "Example1"
+            }
+        }
+        stage('Example2') {
+            steps {
+                echo "Example2"
+            }
+        }
+        stage('Example3') {
+            steps {
+                echo "Example3"
+            }
+        }
+
+    }
+}
+
 // // # environment
 // pipeline {
 //     agent {
