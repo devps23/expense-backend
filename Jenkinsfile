@@ -4,14 +4,14 @@ if(env.TAG_NAME ==~ '.*'){
       print 'OK'
       }
   stage('Release Software') {
-         print 'OK'
+      print 'OK'
       }
  }
  else {
   stage('Lint Code') {
-         print 'OK'
+     print 'OK'
      }
-
+}
 if(env.BRANCH_NAME != 'main'){
   stage('unit tests') {
        print 'OK'
@@ -27,7 +27,3 @@ else {
 }
 }
 
-
-// if master: Lint and Code Review
-// if developer: lint ,unit tests,integration tests,code review
-// if tags: npm install release
