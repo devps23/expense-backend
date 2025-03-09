@@ -1,8 +1,6 @@
 node('ci-server'){
   stage('Lint Code') {
-        steps{
-            echo 'env'
-        }
-    }
+      echo 'env'
+  }
 }
 
