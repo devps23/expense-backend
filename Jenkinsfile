@@ -2,12 +2,12 @@
 node('ci-server') {
     if (env.TAG_NAME ==~ '.*') {
         stage('Build Code') {
-          docker build -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${TAG_NAME}
+           sh 'docker build -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${env.TAG_NAME} .'
            print 'OK'
         }
         stage('Release Software') {
-            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 041445559784.dkr.ecr.us-east-1.amazonaws.com
-            docker push -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${TAG_NAME}
+           sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 041445559784.dkr.ecr.us-east-1.amazonaws.com'
+           sh 'docker push -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${env.TAG_NAME}'
            print 'OK'
         }
         stage('Deploy to Dev'){
