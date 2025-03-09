@@ -11,7 +11,7 @@ if(env.TAG_NAME ==~ '.*'){
   stage('Lint Code') {
          print 'OK'
      }
-}
+
 if(env.BRANCH_NAME != 'main'){
   stage('unit tests') {
        print 'OK'
@@ -19,12 +19,11 @@ if(env.BRANCH_NAME != 'main'){
   stage('integration tests') {
         print 'OK'
   }
-
 }
 else {
   stage('Code Review') {
-          print 'OK'
-     }
+    print 'OK'
+  }
 }
 }
 
