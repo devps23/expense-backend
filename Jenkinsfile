@@ -1,164 +1,123 @@
 // pipeline {
-//     agent any;
-//     stages {
-//         stage('Example1') {
-//             steps {
-//                 sh 'env'
-//                 echo "Example1"
-//             }
-//         }
-//         stage('Example2') {
-//             steps {
-//                 echo "Example2"
-//             }
-//         }
-//         stage('Example3') {
-//             steps {
-//                 echo "Example3"
-//             }
-//         }
-//     }
-// }
-
-pipeline {
-    agent {
-      node {
-        label 'ci-server'
-      }
-    }
-    stages {
-        stage('Example1') {
-            steps {
-                sh 'env'
-                echo "Example1"
-            }
-        }
-        stage('Example2') {
-            steps {
-                echo "Example2"
-            }
-        }
-        stage('Example3') {
-            steps {
-                echo "Example3"
-            }
-        }
-
-    }
-}
-
-// // # environment
-// pipeline {
-//     agent {
-//       node {
-//         label 'ci-server'
-//       }
-//     }
-//     environment {
-//         url = "http://jenkins-internal.pdevops78.online:8080"
-//     }
-//     stages {
-//         stage('Example1') {
-//             steps {
-//                 sh 'env'
-//                 sh 'echo Example1'
-//                 sh 'echo url'
-//             }
-//         }
-//         stage('Example2') {
-//             steps {
-//                 sh 'echo Example2'
-//             }
-//         }
-//         stage('Example3') {
-//             steps {
-//                 sh 'echo Example3'
-//             }
-//         }
-//
-//     }
-// }
-// // # parameters this will add as "Vuild parameters ion jenkins dashboard"
-// pipeline {
-//     agent { node { label 'ci-server' } }
-//     parameters {
-//             string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-//
-//             text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-//
-//             booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-//
-//             choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-//
-//             password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-//         }
+//     agent { node { label 'ci-server'} }
 //        stages {
 //           stage('Example1') {
-//              steps {
-//                 sh 'echo Example1'
-//              }
+//              steps{
+//                sh 'env'
+//                sh 'echo example1'
+//             }
 //           }
 //           stage('Example2') {
 //              steps {
-//                 sh 'echo Example2'
+//                 sh 'echo example2'
 //              }
 //           }
-//           stage('Example3'){
+//           stage('Example3') {
 //              steps {
-//                 sh 'echo Example3'
+//                 sh 'echo example3'
 //              }
 //           }
-//
-//        }
+//       }
 // }
 //
-// // # input condition
+// // # condition check
 // pipeline {
 //     agent { node { label 'ci-server'} }
-//         stages {
-//             stage('Example1'){
-//                input {
-//                    message "Should we continue?"
-//                    ok "Yes, we should."
-//                    submitter "alice,bob"
-//                    }
-//                steps{
-//                   sh 'echo Example1'
-//                }
+//        stages {
+//           stage('Lint Code') {
+//              when {
+//                 not {  buildingTag()  }
+//              }
+//              steps{
+//                sh 'env'
+//                sh 'echo Lint Code'
 //             }
-//             stage('Example2'){
-//                steps{
-//                   sh 'echo Example2'
-//                }
-//             }
-//             stage('Example3'){
-//                steps{
-//                   sh 'echo Example3'
-//                }
-//             }
-//         }
-// }
-// // # when
-// pipeline {
-//     agent { node { label 'ci-server' } }
-//         stages {
-//             stage('Example1'){
-//                 steps {
-//                     sh 'echo Example1'
-//                 }
-//             stage('Example2'){
-//                  when {
-//                      triggeredBy 'SCMTrigger'
+//           }
+//           stage('Unit tests') {
+//              when {
+//                  allOf {
+//                      not {  buildingTag()  }
+//                      branch 'main'
 //                  }
-//                 steps {
-//                     sh 'echo Example2'
-//                 }
-//             }
-//             stage('Example3'){
-//                 steps {
-//                     sh 'echo Example3'
-//                 }
-//             }
-//             }
-//         }
+//              }
+//              steps {
+//                 sh 'echo Unit tests'
+//              }
+//           }
+//           stage('Integration tests') {
+//              when {
+//               allOf {
+//                   not {  buildingTag()  }
+//                   branch 'main'
+//               }
+//              }
+//              steps {
+//                 sh 'echo Integration tests'
+//              }
+//           }
+//           stage('npm install'){
+//
+//              when { buildingTag() }
+//              steps {
+//                 sh 'echo npm install'
+//              }
+//           }
+//           stage('code review') {
+//             when {
+//                not {  buildingTag()  }
+//                }
+//              steps {
+//                 sh 'echo code review'
+//              }
+//           }
+//           stage('Release Software') {
+//              when { buildingTag() }
+//              steps {
+//                 sh 'env Release Software'
+//              }
+//           }
+//       }
 // }
+
+//  Scripted Pipeline
+
+node('ci-server'){
+
+    stage('Lint Code') {
+        steps{
+            print 'env'
+            print 'Lint Code'
+        }
+    }
+    stage('unit tests') {
+        steps{
+            print 'Unit tests'
+        }
+    }
+    stage('Integration tests'){
+        steps{
+            print 'Integration tests'
+        }
+    }
+    stage('npm install'){
+        steps {
+            print 'npm install'
+        }
+    }
+    stage('Release Software') {
+        steps {
+            print 'Release Software'
+        }
+    }
+    stage('Code Review') {
+        steps {
+            print 'Code Review'
+        }
+    }
+
+
+}
+
+// if master: Lint and Code Review
+// if developer: lint ,unit tests,integration tests,code review
+// if tags: npm install release
