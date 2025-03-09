@@ -12,7 +12,7 @@ if(env.TAG_NAME ==~ '.*'){
          print 'OK'
      }
 }
-if(env.BRANCH_NAME != main){
+if(env.BRANCH_NAME != 'main'){
   stage('unit tests') {
        print 'OK'
    }
