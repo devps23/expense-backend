@@ -1,29 +1,34 @@
-node('ci-server'){
-if(env.TAG_NAME ==~ '.*'){
-  stage('npm install') {
-      print 'OK'
-      }
-  stage('Release Software') {
-      print 'OK'
-      }
- }
- else {
-  stage('Lint Code') {
-     print 'OK'
-     }
+
+node('ci-server') {
+    if (env.TAG_NAME ==~ '.*') {
+        stage('Build Code') {
+           print 'OK'
+        }
+        stage('Release Software') {
+           print 'OK'
+        }
+        stage('Deploy to Dev'){
+           print 'OK'
+        }
+    } else {
+        stage('Lint Code') {
+            print 'OK'
+        }
+        if(env.BRANCH_NAME != 'main') {
+            stage('Run Unit tests') {
+                print 'OK'
+            }
+            stage('Run Integration tests') {
+                print 'OK'
+            }
+        }
+        stage('Sonar Scan Code Review') {
+            print 'OK'
+        }
+
+    }
+
 }
-if(env.BRANCH_NAME != 'main'){
-  stage('unit tests') {
-       print 'OK'
-   }
-  stage('integration tests') {
-        print 'OK'
-  }
-}
-else {
-  stage('Code Review') {
-    print 'OK'
-  }
-}
-}
+
+
 
