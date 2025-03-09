@@ -45,4 +45,84 @@ pipeline {
     }
 }
 
-
+// Latest declarative
+// pipeline {
+//     agent { node { label 'ci-server'} }
+//        stages {
+//           stage('Example1') {
+//              steps{
+//                sh 'env'
+//                sh 'echo example1'
+//             }
+//           }
+//           stage('Example2') {
+//              steps {
+//                 sh 'echo example2'
+//              }
+//           }
+//           stage('Example3') {
+//              steps {
+//                 sh 'echo example3'
+//              }
+//           }
+//       }
+// }
+//
+// // # condition check
+// pipeline {
+//     agent { node { label 'ci-server'} }
+//        stages {
+//           stage('Lint Code') {
+//              when {
+//                 not {  buildingTag()  }
+//              }
+//              steps{
+//                sh 'env'
+//                sh 'echo Lint Code'
+//             }
+//           }
+//           stage('Unit tests') {
+//              when {
+//                  allOf {
+//                      not {  buildingTag()  }
+//                      branch 'main'
+//                  }
+//              }
+//              steps {
+//                 sh 'echo Unit tests'
+//              }
+//           }
+//           stage('Integration tests') {
+//              when {
+//               allOf {
+//                   not {  buildingTag()  }
+//                   branch 'main'
+//               }
+//              }
+//              steps {
+//                 sh 'echo Integration tests'
+//              }
+//           }
+//           stage('npm install'){
+//
+//              when { buildingTag() }
+//              steps {
+//                 sh 'echo npm install'
+//              }
+//           }
+//           stage('code review') {
+//             when {
+//                not {  buildingTag()  }
+//                }
+//              steps {
+//                 sh 'echo code review'
+//              }
+//           }
+//           stage('Release Software') {
+//              when { buildingTag() }
+//              steps {
+//                 sh 'env Release Software'
+//              }
+//           }
+//       }
+// }
