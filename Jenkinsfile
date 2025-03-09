@@ -1,5 +1,5 @@
 node('ci-server'){
-if(TAG_NAME ==~ '.*'){
+if(env.TAG_NAME ==~ '.*'){
   stage('npm install') {
       print 'OK'
       }
@@ -12,7 +12,7 @@ if(TAG_NAME ==~ '.*'){
          print 'OK'
      }
 }
-if(BRANCH_NAME !=main){
+if(env.BRANCH_NAME != main){
   stage('unit tests') {
        print 'OK'
    }
