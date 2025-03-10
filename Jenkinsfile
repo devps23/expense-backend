@@ -1,19 +1,19 @@
-
 node('ci-server') {
     stage ('code checkout'){
+        sh "find ."
         if(env.TAG_NAME ==~ ".*") {
             env.branch_name = "refs/tags/${env.TAG_NAME}"
         } else {
             env.branch_name = "${env.BRANCH_NAME}"
         }
-    }
-    checkout([$class: 'GitSCM',
-              branches: [[name: "${branch_name}"]],
-              userRemoteConfigs: [[url: "https://github.com/devps23/expense-backend"]]]
-    )
+        checkout([$class: 'GitSCM',
+          branches: [[name: "${branch_name}"]],
+          userRemoteConfigs: [[url: "https://github.com/devps23/expense-backend"]]]
+        )
     }
     if (env.TAG_NAME ==~ '.*') {
         stage('Build Code') {
+           sh 'env'
            sh 'docker build -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${TAG_NAME} .'
            print 'OK'
         }
