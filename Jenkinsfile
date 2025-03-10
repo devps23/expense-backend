@@ -19,7 +19,7 @@ node('ci-server') {
         }
         stage('Release Software') {
            sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 041445559784.dkr.ecr.us-east-1.amazonaws.com'
-           sh 'docker push -t 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${TAG_NAME}'
+           sh 'docker push 041445559784.dkr.ecr.us-east-1.amazonaws.com/expense-backend:${TAG_NAME}'
            print 'OK'
         }
         stage('Deploy to Dev'){
